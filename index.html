@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="./css/h5.css">
+			<link href="./css/idangerous.swiper.min.css" rel="stylesheet">
+			<link rel="stylesheet" href="./css/video-js.min.css">
+			<link href="./css/watch3D.min.css" type="text/css" rel="stylesheet">
+		<script  type="application/javascript" src="./js/hotcss.js"></script>
+		<script  type="application/javascript" src="./js/video.min.js"></script>
+	
+        <script src="./js/jquery.min.js"></script>
+		<script type="application/javascript" src="./js/idangerous.swiper.min.js"></script>
+		<script type="application/javascript" src="./js/watch3D.min.js"></script>
+<script src="https://cdn.bootcss.com/vConsole/3.2.2/vconsole.min.js"></script>
+	</head>
+	<body id="container">
+		<header id="header">
+          <div>
+            <p></p>
+            <p></p>
+          </div>
+		</header>
+		<nav class="bitmap">
+            <div class="hide box" >
+              <div class="wrapper"></div>
+            </div>
+            <div class="hide box">
+            <video id="my_video_id" class="video-js vjs-default-skin" 
+                x5-video-player-type="h5"
+                x5-video-player-fullscreen="true"
+                x5-video-orientation="portraint"
+				>
+                    <source src="./video/h5_2020831.mp4" type="video/mp4">
+                  </video>
+               
+            </div>
+            <div class=" box">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="./images/back.png" alt="图片" srcset="./images/Bitmap.png 2x,./images/Bitmap@2x.png 3x">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/Bitmap.png" alt="图片" srcset="./images/Bitmap.png 2x,./images/Bitmap@2x.png 3x">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="./images/Bitmap.png" alt="图片" srcset="./images/Bitmap.png 2x,./images/Bitmap@2x.png 3x">
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<ul id="items">
+				<li class="click_show" data-index="1">
+					<span class="  active_ar shows"></span>
+					<span class="text">全景</span>
+				</li>
+				<li class="click_show" data-index="2">
+					<span class=" active_video shows"></span>
+					<span class="text">视频</span>
+				</li>
+				<li class="click_show" data-index="3">
+					<span class="active active_img shows"></span>
+					<span class="text">图片</span>
+				</li>
+			</ul>
+		</nav>
+		<section class="content">
+			<ul class="head ">
+				<li class="title">
+					<h4>整租|租房 江府家园主卧2500随时看房</h4>
+					<h5>
+						<span></span>
+						该房源距你当前位置289m >>
+						</h6>
+						<h6 class="clearfix">
+							<p class="name">
+								<span class="one"> 客厅</span>
+								<span class="two">厨房</span>
+								<span class="three">独立卫生间</span>
+							</p>
+							<p class="money">
+								<span>¥</span>
+								<span class="moneyText">2500</span>
+								<span>/月</span>
+							</p>
+						</h6>
+				</li>
+				<li class="measure ">
+					<ul>
+						<li>
+							<p>3室2厅1卫</p>
+							<p>户型</p>
+						</li>
+						<li>
+							<p>32㎡</p>
+							<p>面积</p>
+						</li>
+						<li>
+							<p>朝南</p>
+							<p>朝向</p>
+						</li>
+						<li>
+							<p>11/28层</p>
+							<p>楼层</p>
+						</li>
+					</ul>
+				</li>
+				<li class="agent">
+					<ul>
+						<li>
+							<img src="./images/avatar.png" alt="头像" srcset="./images/avatar.png 2x,./images/avatar@2x.png 3x">
+						</li>
+						<li>
+							<p>经纪人</p>
+							<p>
+								该房屋机构是企业资质认证的合作伙伴，我们承诺，该房源为真实房源，租期内不涨房租。
+							</p>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<div class="bg"></div>
+			<ul class="other">
+				<li class="describe">
+					<h2>房屋描述</h2>
+					<article>
+						租房期间有专人上门进行安全排查，避免各种安全隐患。
+						有物品损坏，我们还提供上门维修。房屋价格一房一价，
+						如果您可以年付，还会享受零押金。房子精装修，家具家
+						电齐全，包物业取暖，月底入住，可提前看房
+					</article>
+				</li>
+			</ul>
+		</section>
+		<footer class="footer">
+			<ul>
+				<li class="link_box">
+					<p class="link"></p>
+					<p class="link_text">咨询</p>
+				</li>
+				<li class="btn_box">
+					<span class="footer_btn">预约看房</span>
+				</li>
+			</ul>
+		</footer>
+    </body>
+    <script>
+		$(document).ready(function() {
+            var player = videojs('my_video_id', {
+                muted: true,
+                controls: true,
+                height: 300,
+                width: 400,
+                loop: true,
+            });
+			//兼容微信 目前没有自动播放，会loading 
+			$(".click_show").on("click", function() {                
+                let index = $(this).attr("data-index");
+				$(".shows").removeClass("active")
+                $(this).find(".shows").addClass("active")
+                $(".box").addClass("hide")
+				if(index==="2"){
+					document.getElementById("items").style.bottom = "-50px"
+				}else{
+					document.getElementById("items").style.bottom = ""
+				}
+                $(".box").eq(index-1).removeClass("hide")  
+			})
+			document.addEventListener( //IOS
+				'WeixinJSBridgeReady',
+				function() {
+                    player.autoplay('muted');
+                    player.enterFullScreen();
+				},
+				false
+			);
+			document.addEventListener('touchstart', function() { //安卓
+				player.autoplay('muted');
+            }, false);
+            var mySwiper = new Swiper('.swiper-container', {
+				direction: 'horizontal', // 垂直切换选项
+				loop: true, // 循环模式选项
+			})
+        });
+		var vConsole = new VConsole();
+		let layer = document.querySelector(".layer");
+		let w3d = new watch3D({
+		    wrapper : ".wrapper",
+		    autoplay : true,
+		    width: 5000,
+		    height : 2500,
+		    num : 12,
+		    maxY : 25,
+		    resource : "./images/puydesancy.jpg",
+		});
+		/**
+		 * 问题点：
+		 * 1、视频层级问题
+		 * **/ 
+	</script>
+</html>

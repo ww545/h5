@@ -1,0 +1,668 @@
+@charset "UTF-8";
+/**
+ * 解决1px问题
+ */
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+  .border-1px::after {
+    -webkit-transform: scaleY 0.7;
+    transform: scaleY 0.7;
+  }
+  .border-1px::before {
+    -webkit-transform: scaleY 0.7;
+    transform: scaleY 0.7;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  .border-1px::after {
+    -webkit-transform: scaleY 0.5;
+    transform: scaleY 0.5;
+  }
+  .border-1px::before {
+    -webkit-transform: scaleY 0.7;
+    transform: scaleY 0.7;
+  }
+}
+
+.clearfix {
+  display: inline-block;
+  zoom: 1;
+}
+
+.clearfix:after {
+  display: block;
+  content: '.';
+  height: 0;
+  line-height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+#container {
+  font-size: 12px;
+}
+
+[data-dpr="2"] #container {
+  font-size: 24px;
+}
+
+[data-dpr="3"] #container {
+  font-size: 36px;
+}
+
+/* 清零 */
+*:focus {
+  outline: none;
+}
+
+html {
+  /*禁用iPhone中Safari的字号自动调整*/
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  /* 解决IOS默认滑动很卡的情况 */
+  -webkit-overflow-scrolling: touch;
+  font-size: 100px;
+  font-size: 26.6667vw;
+}
+
+/*去除iPhone中默认的input样式*/
+input {
+  -webkit-appearance: none;
+  resize: none;
+}
+
+/*取消链接高亮*/
+body, div, ul, li, ol, h1, h2, h3, h4, h5, h6, input, textarea, select, select, p, dl, dt, dd, a, img, button, form, table, th, th, tr, th, tbody, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  -webkit-tap-hightlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/*设置HTML5元素为块级元素*/
+article, aside, details, figcaption, figure, footer, hgroup, menu, nav, section {
+  display: block;
+}
+
+/*图片自适应*/
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto \9;
+  /*IE8*/
+  -ms-interpolation-mode: bicubic;
+  /*为了照顾IE图片缩放失真*/
+  vertical-align: top;
+}
+
+em, i, strong {
+  font-style: normal;
+}
+
+.clear-fix:after {
+  content: "";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+}
+
+.clear-fix {
+  zoom: 1;
+}
+
+a {
+  text-decoration: none;
+  color: #929292;
+  font-family: 'Microsoft YaHei', Tahoma, Arial, "Roboto", "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "STHeiti", sans-serif;
+}
+
+a:hover {
+  color: #929292;
+  text-decoration: none;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-family: 'Microsoft YaHei', Tahoma, Arial, "Roboto", "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "STHeiti", sans-serif;
+}
+
+fieldset, img {
+  border: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th {
+  text-align: left;
+}
+
+q:before, q:after {
+  content: "";
+}
+
+/*禁止表单使用文本框输入法*/
+input[type="password"] {
+  ime-mode: disabled;
+}
+
+.scope {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.clear {
+  clear: both;
+}
+
+/*连续英文，数字换行*/
+.wordwrap {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+/*单行文字超出显示省略号*/
+.omg {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* 禁止长按链接与图片弹出菜单 */
+a, img {
+  -webkit-touch-callout: none;
+}
+
+/* 禁止选中文本（如无文本选中需求，此为必选项） */
+html, body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+}
+
+#header {
+  position: absolute;
+  top: 1.42933rem;
+  left: 0;
+  z-index: 10;
+  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#header div {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 30px;
+}
+
+#header div p:first-child {
+  width: 1.06667rem;
+  height: 1.06667rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2) url("../images/back.png") center;
+  background-repeat: no-repeat;
+}
+
+#header div p:last-child {
+  width: 1.06667rem;
+  height: 1.06667rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2) url("../images/Collection.png") center;
+  background-repeat: no-repeat;
+}
+
+.bitmap {
+  width: 100vw;
+  height: 10.77333rem;
+  background-repeat: no-repeat;
+  border-radius: 0 0 1.06667rem 1.06667rem;
+  position: relative;
+}
+
+.bitmap .hide {
+  display: none;
+}
+
+.bitmap .box {
+  width: 100vw;
+  margin: 0;
+  height: 10.77333rem !important;
+  position: relative;
+  z-index: 2;
+}
+
+.bitmap .box img {
+  width: 100%;
+  height: 100%;
+}
+
+.bitmap .box .a-grab-cursor {
+  width: 100%;
+  height: 10.77333rem !important;
+}
+
+.bitmap .box #video-android {
+  width: 100%;
+  height: 100%;
+}
+
+.bitmap .box #my_video_id {
+  width: 100%;
+  height: 100%;
+}
+
+.bitmap .box .video-js .vjs-control-bar {
+  height: 4em;
+}
+
+.bitmap .box .swiper-container {
+  width: 100vw;
+  height: 100%;
+}
+
+.bitmap .box .swiper-container .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.bitmap ul {
+  position: absolute;
+  bottom: 0.40533rem;
+  left: 50%;
+  width: 4.26667rem;
+  height: 0.72533rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(51, 51, 51, 0.38);
+  border-radius: 2.13333rem;
+  text-align: center;
+  margin-left: -2.13333rem;
+  z-index: 999;
+}
+
+.bitmap ul li {
+  width: 0.85333rem;
+  height: 0.72533rem;
+  line-height: 0.72533rem;
+  margin-left: 0.42667rem;
+  position: relative;
+}
+
+.bitmap ul li .text {
+  display: block;
+  font-family: PingFangSC-Regular;
+  font-size: 0.42667rem;
+  color: #FFFFFF;
+  letter-spacing: -0.01px;
+  position: relative;
+  z-index: 2;
+}
+
+.bitmap ul li .active {
+  display: block;
+  position: absolute;
+  top: 0;
+  width: 1.57867rem;
+  height: 0.72533rem;
+  line-height: 0.72533rem;
+  background: #3CC6F8;
+  border-radius: 2.13333rem;
+  z-index: 1;
+}
+
+.bitmap ul li .active_ar {
+  left: -0.42667rem;
+}
+
+.bitmap ul li .active_video {
+  left: -0.384rem;
+}
+
+.bitmap ul li .active_img {
+  left: -0.29867rem;
+}
+
+.content {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-bottom: 2.34667rem;
+  width: 100vw;
+}
+
+.content .bg {
+  background-color: rgba(60, 198, 248, 0.21);
+  height: 0.42667rem;
+  width: 100vw;
+}
+
+.content .head {
+  background: #ffffff;
+  margin: 0 0.64rem;
+}
+
+.content .head .title {
+  overflow: hidden;
+  padding: 0.64rem 0;
+  position: relative;
+  min-height: 4.37333rem;
+}
+
+.content .head .title:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #eeeeee;
+  content: ' ';
+}
+
+.content .head .title h4 {
+  font-family: PingFangSC-Medium;
+  font-size: 0.768rem;
+  color: #000000;
+  letter-spacing: -0.07px;
+}
+
+.content .head .title h5 {
+  font-family: PingFangSC-Regular;
+  font-size: 0.512rem;
+  color: #666666;
+  letter-spacing: -0.05px;
+  margin: 0.21333rem 0 0.42667rem 0;
+}
+
+.content .head .title h6 {
+  width: 100vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content .head .title h6 .name {
+  font-family: PingFangSC-Regular;
+  font-size: 0.42667rem;
+  color: #0DB791;
+  letter-spacing: -0.04px;
+}
+
+.content .head .title h6 .name span {
+  display: block;
+  float: left;
+  min-width: 1.87733rem;
+  height: 0.64rem;
+  line-height: 0.64rem;
+  text-align: center;
+  margin-right: 0.42667rem;
+  padding: 0 0.42667rem;
+}
+
+.content .head .title h6 .name span:last-child {
+  margin-right: 0;
+}
+
+.content .head .title h6 .name .one {
+  color: #3CC6F8;
+  background: rgba(60, 198, 248, 0.21);
+}
+
+.content .head .title h6 .name .two {
+  color: #F87415;
+  background: #FCC160;
+}
+
+.content .head .title h6 .name .three {
+  color: #0DB791;
+  background: #50E3C2;
+}
+
+.content .head .title h6 .money {
+  position: absolute;
+  right: 0.64rem;
+  font-family: PingFangSC-Regular;
+  color: #FF304A;
+  letter-spacing: -0.04px;
+  font-size: 0.42667rem;
+}
+
+.content .head .title h6 .moneyText {
+  font-family: PingFangSC-Medium;
+  font-size: 0.768rem;
+}
+
+.content .head .measure {
+  height: 3.09333pxrem;
+  padding: 0.64rem 0;
+  position: relative;
+}
+
+.content .head .measure:after {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid #eeeeee;
+  content: ' ';
+}
+
+.content .head .measure ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content .head .measure ul li {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: center;
+}
+
+.content .head .measure ul li p:first-child {
+  font-family: PingFangSC-Medium;
+  font-size: 0.64rem;
+  color: #333333;
+  letter-spacing: -0.06px;
+  line-height: 0.896rem;
+}
+
+.content .head .measure ul li p:last-child {
+  font-family: PingFangSC-Regular;
+  font-size: 0.512rem;
+  color: #999999;
+  line-height: 0.704rem;
+  letter-spacing: -0.05px;
+}
+
+.content .head .agent {
+  height: 4.37333rem;
+  padding: 0.64rem 0;
+}
+
+.content .head .agent ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content .head .agent ul li:first-child {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 1.36533rem;
+          flex: 0 0 1.36533rem;
+  width: 1.36533rem;
+}
+
+.content .head .agent ul li:first-child img {
+  width: 1.36533rem;
+  height: 1.36533rem;
+  border-radius: 50%;
+}
+
+.content .head .agent ul li:last-child {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 0.64rem;
+}
+
+.content .head .agent ul li:last-child p:first-child {
+  font-family: PingFangSC-Medium;
+  font-size: 0.55467rem;
+  color: #333333;
+  letter-spacing: -0.05px;
+}
+
+.content .head .agent ul li:last-child p:last-child {
+  margin-top: 0.21333rem;
+  font-family: PingFangSC-Regular;
+  font-size: 0.512rem;
+  color: #999999;
+  line-height: 0.85333rem;
+}
+
+.content .other {
+  width: 100vw;
+  padding: 0.64rem 0;
+}
+
+.content .other .describe {
+  padding: 0 0.64rem;
+}
+
+.content .other .describe h2 {
+  font-family: PingFangSC-Medium;
+  font-size: 0.72533rem;
+  color: #333333;
+  letter-spacing: -0.07px;
+  margin-bottom: 0.85333rem;
+}
+
+.content .other .describe article {
+  font-family: PingFangSC-Regular;
+  font-size: 0.59733rem;
+  color: #999999;
+  letter-spacing: -0.06px;
+  line-height: 0.85333rem;
+}
+
+.footer {
+  width: 100vw;
+  height: 2.34667rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  background: #FFFFFF;
+  -webkit-box-shadow: 0 -0.128rem-1.17333rem 0 rgba(216, 216, 216, 0.5);
+          box-shadow: 0 -0.128rem-1.17333rem 0 rgba(216, 216, 216, 0.5);
+}
+
+.footer ul {
+  width: 100vw;
+  padding: 0 0.64rem 0 0.896rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.footer ul .link_box {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 0.93867rem;
+          flex: 0 0 0.93867rem;
+}
+
+.footer ul li .link {
+  width: 0.93867rem;
+  height: 0.93867rem;
+  background-image: url("../images/link.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+  .footer ul li .link {
+    background-image: url("../images/link@2x.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+}
+
+.footer ul li .link_text {
+  font-size: 20px;
+  color: #999999;
+  letter-spacing: -0.04px;
+  font-family: "PingFangSC-Regular";
+  margin-top: 0.10667rem;
+  text-align: center;
+}
+
+.footer ul li .footer_btn {
+  font-family: "PingFangSC-Medium";
+  font-size: 0.768rem;
+  color: #FFFFFF;
+  letter-spacing: -0.07px;
+}
+
+.footer ul .btn_box {
+  margin-left: 0.53333rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background-image: linear-gradient(141deg, #92EEEE 0%, #00A9FF 100%);
+  border-radius: 0.21333rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+/*# sourceMappingURL=h5.css.map */

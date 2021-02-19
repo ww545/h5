@@ -1,0 +1,89 @@
+@function px2rem($px){
+	@return $px*320/$designWidth/20 + rem;
+}
+$designWidth : 750; 
+// 图片倍数切换 2 倍 和 3倍
+@mixin bg-image ($url,$w) {
+	background-image: url($url + '.png');
+	background-size: $w;
+	background-repeat: no-repeat;
+	@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+	  background-image: url($url + '@2x.png');
+	  background-size: $w;
+	  background-repeat: no-repeat;
+	}
+}  
+$fmyp:"PingFangSC-Medium";
+$fmys:"PingFangSC-Regular";
+/**
+ * 解决1px问题
+ */
+ @mixin border-1px($color) {
+	position: relative;
+	&:after {
+	  display: block;
+	  position: absolute;
+	  left: 0;
+	  bottom: 0;
+	  width: 100%;
+	  border-top: 1px solid $color;
+	  content: ' ';
+	}
+  }
+
+@mixin border-none(){
+	&:after{
+		display: none;	
+	}
+}
+@mixin layoutbor($h){
+	height:px2rem($h);         
+	padding:px2rem(30) 0;
+	@include border-1px(rgba(238,238,238,1));
+}
+@media  (-webkit-min-device-pixel-ratio:1.5),(min-device-pixel-ratio:1.5){
+	.border-1px{
+		&::after{
+			-webkit-transform: scaleY (0.7);
+			transform: scaleY (0.7);
+		}
+		&::before{
+			-webkit-transform: scaleY (0.7);
+			transform: scaleY (0.7);
+		}
+	}
+
+}
+
+@media  (-webkit-min-device-pixel-ratio:2),(min-device-pixel-ratio:2){
+	.border-1px{
+		&::after{
+			-webkit-transform: scaleY (0.5);
+			transform: scaleY (0.5)
+		}
+	  &::before{
+		-webkit-transform: scaleY (0.7);
+		transform: scaleY (0.7);
+	  }
+	}
+}
+$col1:#3CC6F8;
+$col2:rgba(60,198,248,0.21);
+$col3:#F87415  ;
+$col4:#FCC160 ;
+$col5:#0DB791 ;
+$col6:#50E3C2 ;
+.clearfix{
+	display: inline-block;
+	zoom: 1;
+    &:after{
+		display: block;
+		content: '.';
+		height: 0;
+		line-height: 0;
+		clear: both;
+		visibility: hidden;
+	}
+}
+
+

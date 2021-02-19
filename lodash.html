@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		const toString = Object.prototype.toString
+		
+		/**
+		 * Gets the `toStringTag` of `value`.
+		 *
+		 * @private
+		 * @param {*} value The value to query.
+		 * @returns {string} Returns the `toStringTag`.
+		 */
+		function getTag(value) {
+		  if (value == null) {
+		    return value === undefined ? '[object Undefined]' : '[object Null]'
+		  }
+		  return toString.call(value)
+		}
+
+	</script>
+	<script type="text/javascript">
+		/**
+		 * Checks if `value` is object-like. A value is object-like if it's not `null`
+		 * and has a `typeof` result of "object".
+		 *
+		 * @since 4.0.0
+		 * @category Lang
+		 * @param {*} value The value to check.
+		 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+		 * @example
+		 *
+		 * isObjectLike({})
+		 * // => true
+		 *
+		 * isObjectLike([1, 2, 3])
+		 * // => true
+		 *
+		 * isObjectLike(Function)
+		 * // => false
+		 *
+		 * isObjectLike(null)
+		 * // => false
+		 */
+		function isObjectLike(value) {
+		  return typeof value === 'object' && value !== null
+		}
+
+	</script>
+	<script type="text/javascript">
+		/**
+		 * Checks if `value` is likely an `arguments` object.
+		 *
+		 * @since 0.1.0
+		 * @category Lang
+		 * @param {*} value The value to check.
+		 * @returns {boolean} Returns `true` if `value` is an `arguments` object, else `false`.
+		 * @example
+		 *
+		 * isArguments(function() { return arguments }())
+		 * // => true
+		 *
+		 * isArguments([1, 2, 3])
+		 * // => false
+		 */
+		function isArguments(value) {
+		  return isObjectLike(value) && getTag(value) == '[object Arguments]'
+		}
+	</script>
+	<script type="text/javascript">
+		
+		/** Built-in value reference. */
+		const spreadableSymbol = Symbol.isConcatSpreadable
+		
+		/**
+		 * Checks if `value` is a flattenable `arguments` object or array.
+		 *
+		 * @private
+		 * @param {*} value The value to check.
+		 * @returns {boolean} Returns `true` if `value` is flattenable, else `false`.
+		 */
+		function isFlattenable(value) {
+		  return Array.isArray(value) || isArguments(value) ||
+		    !!(value && value[spreadableSymbol])
+		}
+
+	</script>
+	<script type="text/javascript">
+		
+		/**
+		 * The base implementation of `flatten` with support for restricting flattening.
+		 *
+		 * @private
+		 * @param {Array} array The array to flatten.
+		 * @param {number} depth The maximum recursion depth.
+		 * @param {boolean} [predicate=isFlattenable] The function invoked per iteration.
+		 * @param {boolean} [isStrict] Restrict to values that pass `predicate` checks.
+		 * @param {Array} [result=[]] The initial result value.
+		 * @returns {Array} Returns the new flattened array.
+		 */
+		function baseFlatten(array, depth, predicate, isStrict, result) {
+		  predicate || (predicate = isFlattenable)
+		  result || (result = [])
+		
+		  if (array == null) {
+		    return result
+		  }
+		
+		  for (const value of array) {
+		    if (depth > 0 && predicate(value)) {
+		      if (depth > 1) {
+		        // Recursively flatten arrays (susceptible to call stack limits).
+		        baseFlatten(value, depth - 1, predicate, isStrict, result)
+		      } else {
+		        result.push(...value)
+		      }
+		    } else if (!isStrict) {
+		      result[result.length] = value
+		    }
+		  }
+		  return result
+		}
+	</script>
+	<!-- 第二层JS -->
+	<script type="text/javascript">
+		
+	</script>
+	<script type="text/javascript">
+		import baseFlatten from './.internal/baseFlatten.js'
+		import baseUniq from './.internal/baseUniq.js'
+		import isArrayLikeObject from './isArrayLikeObject.js'
+		import last from './last.js'
+		
+		
+		
+		
+		
+		
+		function unionWith(...arrays) {
+		  let comparator = last(arrays)
+		  comparator = typeof comparator === 'function' ? comparator : undefined
+		  return baseUniq(baseFlatten(arrays, 1, isArrayLikeObject, true), undefined, comparator)
+		}
+
+	</script>
+</html>
